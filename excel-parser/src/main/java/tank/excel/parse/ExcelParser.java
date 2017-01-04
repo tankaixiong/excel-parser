@@ -10,10 +10,7 @@ import tank.excel.annotation.FieldFormat;
 import tank.excel.exception.AnnotationParamException;
 import tank.excel.exception.ExcelException;
 import tank.excel.exception.FieldFormatException;
-import tank.excel.format.CollectionJsonFormat;
-import tank.excel.format.IFieldFormat;
-import tank.excel.format.SimpleFieldFormat;
-import tank.excel.format.StringFieldFormat;
+import tank.excel.format.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -64,6 +61,13 @@ public class ExcelParser {
 
         fieldFormatMap.put(Byte.class, simpleFieldFormat);
         fieldFormatMap.put(byte.class, simpleFieldFormat);
+
+        //boolean 型
+        BooleanFieldFormat booleanFieldFormat=new BooleanFieldFormat();
+        fieldFormatMap.put(Boolean.class, booleanFieldFormat);
+        fieldFormatMap.put(boolean.class, booleanFieldFormat);
+
+
         //字符串
         fieldFormatMap.put(String.class, new StringFieldFormat());
         //集合格式
@@ -119,6 +123,10 @@ public class ExcelParser {
             excelMap.put(clazz, new ArrayList());
 
             ExcelEntity anno = clazz.getAnnotation(ExcelEntity.class);
+            if(anno==null){
+              continue;
+            }
+
             if (anno.file() == null || anno.file() == "" || anno.sheet() == null || anno.sheet() == "") {
                 throw new AnnotationParamException("参数不能为空");
             }

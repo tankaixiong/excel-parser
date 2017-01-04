@@ -10,6 +10,6 @@ package tank.excel.format;
 public class StringFieldFormat implements IFieldFormat<String>{
     @Override
     public String format(Class t, String value) {
-        return null;
+        return value;
     }
 }

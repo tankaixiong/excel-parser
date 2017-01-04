@@ -30,4 +30,8 @@ public class Role {
     protected Map<Integer, Integer> test;//觉醒消耗
 
     protected Set<Integer> test2;//
+
+    protected Boolean test3;
+
+
 }
