@@ -3,10 +3,16 @@ ExcelParser 解析excel转换为POJO类，支持基础类型(int,long,double,flo
 
 
 一，基本使用
+
+
 ExcelParser excelParser = ExcelParser.getInstance();
+
 //excelParser.addFieldFormat();
+
 //excelParser.setDataRowIndex(1);
+
 //excelParser.setTitleRowIndex(3);
+
 excelParser.scanPackage(new String[]{"tank.excel.entity"}, "/excel/");//指定excel映射实体类的对应的包，excel数据文件路径
 
 
@@ -17,11 +23,13 @@ Map<Class, List> map = excelParser.getExcelMap();//获取数据
 自定义解析字段示例：
 
 2.1,添加注解
+
  @FieldFormat(format = ListFormat.class)
  protected List<Integer[]> myField;
 
 2.2，实现逻辑
 public class ListFormat implements IFieldFormat<List<Integer[]>> {
+
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
