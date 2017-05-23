@@ -33,5 +33,59 @@ public class Role {
 
     protected Boolean test3;
 
+    public int getIndexID() {
+        return indexID;
+    }
 
+    public void setIndexID(int indexID) {
+        this.indexID = indexID;
+    }
+
+    public int getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
+    }
+
+    public List<Integer[]> getInterval() {
+        return interval;
+    }
+
+    public void setInterval(List<Integer[]> interval) {
+        this.interval = interval;
+    }
+
+    public List<Integer[]> getAttr() {
+        return attr;
+    }
+
+    public void setAttr(List<Integer[]> attr) {
+        this.attr = attr;
+    }
+
+    public Map<Integer, Integer> getTest() {
+        return test;
+    }
+
+    public void setTest(Map<Integer, Integer> test) {
+        this.test = test;
+    }
+
+    public Set<Integer> getTest2() {
+        return test2;
+    }
+
+    public void setTest2(Set<Integer> test2) {
+        this.test2 = test2;
+    }
+
+    public Boolean getTest3() {
+        return test3;
+    }
+
+    public void setTest3(Boolean test3) {
+        this.test3 = test3;
+    }
 }

@@ -1,5 +1,7 @@
 package tank.excel.format;
 
+import java.lang.reflect.Field;
+
 /**
  * @Author: tank
  * @Email: kaixiong.tan@qq.com
@@ -9,5 +11,5 @@ package tank.excel.format;
  */
 public interface IFieldFormat<T> {
 
-    T format(Class fieldClazz, String value);
+    T format(Field field, String value);
 }

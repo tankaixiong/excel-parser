@@ -1,5 +1,7 @@
 package tank.excel.format;
 
+import java.lang.reflect.Field;
+
 /**
  * @Author: tank
  * @Email: kaixiong.tan@qq.com
@@ -7,9 +9,9 @@ package tank.excel.format;
  * @Version: 1.0
  * @Description:
  */
-public class StringFieldFormat implements IFieldFormat<String>{
+public class StringFieldFormat implements IFieldFormat<String> {
     @Override
-    public String format(Class t, String value) {
+    public String format(Field field, String value) {
         return value;
     }
 }

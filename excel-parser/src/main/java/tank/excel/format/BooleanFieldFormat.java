@@ -2,6 +2,8 @@ package tank.excel.format;
 
 import tank.excel.exception.FieldFormatException;
 
+import java.lang.reflect.Field;
+
 /**
  * @Author: tank
  * @Email: kaixiong.tan@qq.com
@@ -12,7 +14,8 @@ import tank.excel.exception.FieldFormatException;
 public class BooleanFieldFormat implements IFieldFormat<Boolean> {
 
     @Override
-    public Boolean format(Class t, String value) {
+    public Boolean format(Field field, String value) {
+        Class t = field.getType();
         if (value == null || value == "") {
             return false;
         }

@@ -1,7 +1,12 @@
 package tank.excel.demo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Stopwatch;
 import tank.excel.parse.ExcelParser;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: tank
@@ -11,7 +16,9 @@ import tank.excel.parse.ExcelParser;
  * @Description:
  */
 public class Demo {
-    public static void main(String[] args) {
+    private static ObjectMapper objectMapper = new ObjectMapper();
+
+    public static void main(String[] args) throws JsonProcessingException {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
 
@@ -25,6 +32,18 @@ public class Demo {
 
         System.out.println(stopwatch);
 
-        System.out.println(excelParser.getExcelMap().size());
+        //System.out.println(excelParser.getExcelMap().size());
+
+        Map<Class, List> map = excelParser.getExcelMap();
+        for (Map.Entry<Class, List> entry : map.entrySet()) {
+
+            List list = entry.getValue();
+
+            for (Object item : list) {
+
+                System.out.println(objectMapper.writeValueAsString(item));
+            }
+        }
+
     }
 }

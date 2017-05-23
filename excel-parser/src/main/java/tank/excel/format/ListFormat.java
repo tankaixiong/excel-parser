@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,9 +22,11 @@ public class ListFormat implements IFieldFormat<List<Integer[]>> {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public List<Integer[]> format(Class fieldClazz, String value) {
+    public List<Integer[]> format(Field field, String value) {
 
         try {
+            //Class fieldClazz = field.getType();
+
             return objectMapper.readValue(value, new TypeReference<List<Integer[]>>() {
             });
         } catch (IOException e) {

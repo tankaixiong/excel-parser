@@ -63,7 +63,7 @@ public class ExcelParser {
         fieldFormatMap.put(byte.class, simpleFieldFormat);
 
         //boolean 型
-        BooleanFieldFormat booleanFieldFormat=new BooleanFieldFormat();
+        BooleanFieldFormat booleanFieldFormat = new BooleanFieldFormat();
         fieldFormatMap.put(Boolean.class, booleanFieldFormat);
         fieldFormatMap.put(boolean.class, booleanFieldFormat);
 
@@ -123,8 +123,8 @@ public class ExcelParser {
             excelMap.put(clazz, new ArrayList());
 
             ExcelEntity anno = clazz.getAnnotation(ExcelEntity.class);
-            if(anno==null){
-              continue;
+            if (anno == null) {
+                continue;
             }
 
             if (anno.file() == null || anno.file() == "" || anno.sheet() == null || anno.sheet() == "") {
@@ -143,7 +143,6 @@ public class ExcelParser {
     public static Map<Class, List> getExcelMap() {
         return excelMap;
     }
-
 
 
     private void readExcel(String file, List<ExcelPojo> sheetNameList) {
@@ -234,7 +233,7 @@ public class ExcelParser {
                             throw new FieldFormatException("没有找到对应类型" + field.getType() + "的转换器");
                         }
                         try {
-                            Object fieldValue = fieldFormat.format(field.getType(), cellValue);//格式化，可做扩展
+                            Object fieldValue = fieldFormat.format(field, cellValue);//格式化，可做扩展
                             field.set(obj, fieldValue);
                         } catch (Exception e) {
                             LOGGER.error("表:{},sheet:{}, 行:{}, 列:{}", file, sheet.getSheetName(), r, c);
