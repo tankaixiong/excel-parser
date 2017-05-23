@@ -28,6 +28,7 @@ Map<Class, List> map = excelParser.getExcelMap();//获取数据
  protected List<Integer[]> myField;
 
 2.2，实现逻辑
+
 public class ListFormat implements IFieldFormat<List<Integer[]>> {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
